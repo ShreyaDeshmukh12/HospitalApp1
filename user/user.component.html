@@ -1,0 +1,78 @@
+<div >
+    <table>
+        <tr>
+            <td>
+                <div class="Watchlist">
+                    Watchlist <br/>
+                    {{watchlistCount}}
+                </div>    
+            </td>
+            <td>
+                Filter Hospital 
+                Speciality
+                
+                    <select #speciality (change)="getFilterData1(speciality.value)">
+                        <option> Dermatologist </option>
+                        <option> Cardiologist </option>
+                        <option> Oncologist </option>
+                        <option> Orthopedist </option>
+                    </select>
+                   
+            
+            </td>
+            <td>
+                Filter Hospital 
+                City
+                
+                    <select #city (change)="getFilterData2(city.value)">
+                        <option> Pune </option>
+                        <option> Mumbai </option>
+                        <option> Delhi </option>
+                        <option> Nagpur </option>
+                    </select>
+                   
+            
+            </td>
+            
+        </tr>
+    </table>
+   
+
+
+</div>
+
+
+
+<hr/>
+<div *ngFor="let c of allHospital">
+    <table>
+        <tr>
+            <td> <img src="/assets/Images/{{c.image}}" alt="Hospital image" width="120px" height="150px"> </td>
+            <td> 
+                <h2>{{c.hospitalName}} </h2>
+                <p> {{c.about | mydescription}} </p>
+                
+
+                <hr/>
+                HospitalId: {{c.hospitalId}} <br/>
+                HospitalName: {{c.hospitalName}} <br/>
+                Speciality: {{c.speciality}} <br/>
+                City: {{c.city}}
+                
+                <p>Price: {{c.price|currency}}<i> with {{c.discount}}% off</i></p>
+                <span *ngIf="c.discount>10">
+                    <b style="color:blueviolet; font-family:Georgia, 'Times New Roman', Times, serif,"><u>Recommended Hospital.</u></b><br/>
+    
+                </span>
+    
+    
+                <hr/>
+                <button value="{{c.hospitalId}}" (click)="goForAppoinment(hospital.value)" #hospital> Appointment </button>
+                <button value="{{c.hospitalId}}" (click)="addWatchlist(hospital.value)" #hospital> Add to Watchlist </button>
+                    
+                
+            </td>
+            
+        </tr>
+    </table>
+    </div>

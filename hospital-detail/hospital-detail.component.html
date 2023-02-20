@@ -1,0 +1,25 @@
+<td> <img src="/assets/Images/{{c.image}}" alt="Hospital image" width="250px" height="250px"> </td>
+<h2 style="color: brown; font-style: italic;">{{c.hospitalName}} </h2>
+<table>
+    <tr>
+        
+        <td> 
+            <h2>{{c.hospitalName}} </h2>
+            <p> {{c.about | mydescription}} </p>
+            
+
+            <hr/>
+
+            
+            <p>Price: {{c.price|currency}}<i> with {{c.discount}}% off</i></p>
+            <span *ngIf="c.discount>10">
+
+                <b style="color:blueviolet; font-family:Georgia, 'Times New Roman', Times, serif,"><u>Recommended Hospital.</u></b><br/>
+
+            </span>
+                
+            
+        </td>
+        
+    </tr>
+</table>
